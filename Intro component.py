@@ -28,8 +28,18 @@ When you are asked a question, there will be a list of options lettered A-Z. If 
             continue
         elif(t_question.lower() == 'a' or t_question.lower() == 'b'):
              break
-    print('Well done./n You are now ready to learn about the movement system.') 
-    
+    print('Well done.\nYou are now ready to learn about the movement system. When you are not in combat or conversation, you will be told what directions you can move. You move by typing the first letter of the direction (N for North). Lets try') 
+    while(True):
+        t_question = input('You can go North\nYou can go East\nEnter [n] [s] [e] [w]:')
+        if(t_question.lower() != 'n' and t_question.lower() != 's' and t_question.lower() != 'e' and t_question.lower() != 'w'):
+            print('Try again')
+            continue
+        elif(t_question.lower() == 'n' or t_question.lower() == 'e'):
+            print('You did it.You beat the tutorial')
+            break
+        elif(t_question.lower() == 's' or t_question.lower() == 'w'):
+            print("So close, but you can't move that way here")
+            continue
     
 
 
