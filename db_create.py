@@ -49,6 +49,25 @@ def search_db_players():
          print(i)      
 
 # display percent of players that got questions right
+def search_db_percent():
+    divide_by = 0
+    c.execute("SELECT name FROM players")
+    results = c.fetchall()   #you can use fetchone if you want one result
+    conn.commit()
+
+    for i in results:
+        divide_by += 1
+
+    divide = 0
+    c.execute("SELECT q1 FROM quizes")
+    results = c.fetchall()   #you can use fetchall if you want one result
+    conn.commit()
+
+    for i in results:
+        divide += 1
+
+    divide_result = divide / divide_by
+    print(divide_result) # correct answers DIVIDED BY players times 100
 
 #display percent of questions that the player got rights
 
@@ -74,7 +93,7 @@ c.execute("INSERT INTO players VALUES ('{}')".format(name))
 # step 3 - display players in db table     
 search_db_players()
 
-
+search_db_percent()
 
 
 
