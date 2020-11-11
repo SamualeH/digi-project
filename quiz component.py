@@ -1,4 +1,4 @@
-def combat(): 
+def combat(person): 
     future_db = 0 #placeholder for db functionality
     if (person == 'greg'): #checks what person's quiz to use
         print("Greg: Ah, so you think you can beat me in a battle of wits. We'll just see about that.")
@@ -31,8 +31,8 @@ def combat():
         else:
             print("Greg: That was pretty bad, just take the key for the next fortress and leave")
     
-    elif(person =='fred'):
+    elif(person =='steve'):
         pass
 
 person = 'greg'
-combat()
+combat(person)
