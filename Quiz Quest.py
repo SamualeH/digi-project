@@ -9,9 +9,17 @@
 
 area = 0 #starting point
 
-areas = ['0,0','0,1','0,2','0,3','1,0','1,1','1,2','1,3','2,0','2,1','2,2','2,3','3,0','3,1','3,2','3,3','1','2','3','4']
+areas = ['0,0','0,1','0,2','0,3',
+         '1,0','1,1','1,2','1,3',
+         '2,0','2,1','2,2','2,3',
+         '3,0','3,1','3,2','3,3',
+         '1','2','3','4']
 
-desc = ['Bottom left ','Lower left','Upper left','Top left','bottom middle left','lower middle left','Upper middle left','Top middle left','Bottom middle right','Lower middle right','Upper middle right','Top middle right','Bottom right','Lower right','Upper right','Top right','Entrance room','Battle room','Entrance room','Battle room']
+desc = ['Bottom left ','Lower left','Upper left','Top left: There is a door North of you',
+        'bottom middle left','lower middle left','Upper middle left','Top middle left',
+        'Bottom middle right','Lower middle right','Upper middle right','Top middle right',
+        'Bottom right','Lower right','Upper right','Top right: There is a door North of you',
+        'Entrance room','Battle room','Entrance room','Battle room']
 
 n = [1,2,3,16,5,6,7,'NO',9,10,11,'NO',13,14,15,18,17,'NO',19,'NO']
 s = ['NO',0,1,2,'NO',4,5,6,'NO',8,9,10,'NO',12,13,14,3,16,15,18,]
@@ -88,15 +96,15 @@ def navigation(area):
         else:
             print('You cannot go there')
             continue
-        if (area == '2'): #checks what room you're in
+        if (area == 17): #checks what room you're in  desc[area] == 'Battle room'
             person = 'greg' #sets who to talk to
-            combat(person)
-        elif(area == 4):
+            dialoge(person)
+        elif(area == 19):
             person = 'steve' #set's who to talk to if not greg
-            combat(person)
+            dialoge(person)
         else:
             person = 'null' #sets person just in case
-        print (person) #testing if person is changed properly
+        
 
 
 
@@ -115,8 +123,8 @@ def dialoge(person):
                 print('"Id rather not get into that, seeing as I just met you"')
             elif (chat_option.lower() == 'c'):
                 print('"Ah, I see what you want. Well, no sense in delaying this. Have at the!"')
-                #combat(person):
-                #break
+                combat(person)
+                break
     elif (person == 'steve'):
         print('"Welcome to my home. What would you like to ask me."')
         while(True):
@@ -125,13 +133,13 @@ def dialoge(person):
                 print ("Try again")
                 continue
             elif (chat_option.lower() == 'a'):
-                print('"Its been rather agrovating, what with all these adventurers showing up at my house and challenging me to quiz battles "')
+                print('"Its been rather agrovating, what with all these adventurers\n showing up at my house and challenging me to quiz battles "')
             elif (chat_option.lower() == 'b'):
                 print('"Between you and me, I acutally dont exist outisde this conversation"')
             elif (chat_option.lower() == 'c'):
                 print('"Really? Fine. Have at the or whatever"')
-                #combat(person):
-                #break
+                combat(person)
+                break
 
             
     else:
@@ -143,7 +151,6 @@ def combat(person):
     future_db = 0 #placeholder for db functionality
     future_dbsteve = 0
     if (person == 'greg'): #checks what person's quiz to use
-        print("Greg: Ah, so you think you can beat me in a battle of wits. We'll just see about that.")
         
         while(True):
             quiz_answer = input("What character do you play as in Wario's Woods for the NES:\nA)Mario B)Wario C)Toad") 
@@ -180,9 +187,9 @@ def combat(person):
             break
         
         if (future_db == 3):
-            print("Greg: You're pretty good. Take this key and go on to the next fortress")
+            print("Greg: You're pretty good. You should go on to the next fortress")
         else:
-            print("Greg: That was pretty bad, just take the key for the next fortress and leave")
+            print("Greg: That was pretty bad, just leave this fortress and bother the other guy")
     
 
     elif(person =='steve'):
